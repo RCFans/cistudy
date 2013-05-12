@@ -79,8 +79,7 @@ public class MongoDataSource extends DataSource<Iterator<Map<String, Object>>> {
         private Map<String, Object> nextObject(DBCursor cursor) {
             DBObject object = cursor.next();
             Map<String, Object> result = new HashMap<String, Object>();
-            Set<String> keys = object.keySet();
-            for (String key : keys) {
+            for (String key : object.keySet()) {
                 for (Map<String, String> fieldMap : fields) {
                     if (fieldMap.containsKey(key)) {
                         result.put(fieldMap.get(key), object.get(key));
